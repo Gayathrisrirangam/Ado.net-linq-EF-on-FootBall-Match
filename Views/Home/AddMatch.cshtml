@@ -1,0 +1,46 @@
+﻿@model FootBallMatchs.Models.FootBall
+@{
+    ViewBag.Title = "AddMatch";
+}
+
+<h1 style="text-align:center;">FOOTBALL LEAGUE</h1>
+<style>
+    body {
+        background-color: bisque;
+    }
+</style>
+<h3 style="text-align:center;">Adding New Match Data</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    <p>
+        MatchID: <input type="number" name="MatchID" />
+        @Html.ValidationMessageFor(m => m.MatchID)
+    </p>
+    <p>
+        TeamName1: <input type="text" name="TeamName1" />
+        @Html.ValidationMessageFor(m => m.TeamName1)
+    </p>
+    <p>
+        TeamName2: <input type="text" name="TeamName2" />
+        @Html.ValidationMessageFor(m => m.TeamName2)
+    </p>
+
+    string[] s = { "Win", "Draw" };
+    SelectList list = new SelectList(s);
+<p>
+    Status: @Html.DropDownList("Status", list, "select an option")
+    @Html.ValidationMessageFor(m => m.Status)
+</p>
+<p>
+    WinningTeam: <input type="text" name="WinningTeam"/>
+    @Html.ValidationMessageFor(m => m.WinningTeam)
+</p>
+<p>
+    Points: <input type="number" name="Points" />
+    @Html.ValidationMessageFor(m => m.Points)
+</p>
+
+
+    <input type="submit" value="Save Match Data" />
+}
